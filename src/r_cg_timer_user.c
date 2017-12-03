@@ -78,13 +78,12 @@ void r_tmr_rj0_interrupt(void)
 	A = 0.99*TRDGRA1;
 
 	if (leftB)
-			function=1;
-	if (midB){
-		tempflag=0;
+		function=1;
+	if (midB)
 		function=2;
-	}
 	if (rightB)
-			function=3;
+		function=3;
+
 	if (upB && tempflag==0){
 		tempflag=1;
 		F1+=1;
@@ -93,6 +92,9 @@ void r_tmr_rj0_interrupt(void)
 		tempflag=1;
 		F1-=1;
 	}
+
+	if(!upB && !downB)
+		tempflag=0;
 
 
 	x+=t_update*F1;
