@@ -1,0 +1,177 @@
+   1                             	r8	=	0xffef0
+   2                             	r16	=	0xffee8
+   3                             	r24	=	0xffee0
+   4                             	r9	=	0xffef1
+   5                             	r17	=	0xffee9
+   6                             	r25	=	0xffee1
+   7                             	r10	=	0xffef2
+   8                             	r18	=	0xffeea
+   9                             	r26	=	0xffee2
+  10                             	r11	=	0xffef3
+  11                             	r19	=	0xffeeb
+  12                             	r27	=	0xffee3
+  13                             	r12	=	0xffef4
+  14                             	r20	=	0xffeec
+  15                             	r28	=	0xffee4
+  16                             	r13	=	0xffef5
+  17                             	r21	=	0xffeed
+  18                             	r29	=	0xffee5
+  19                             	r14	=	0xffef6
+  20                             	r22	=	0xffeee
+  21                             	r30	=	0xffee6
+  22                             	r15	=	0xffef7
+  23                             	r23	=	0xffeef
+  24                             	r31	=	0xffee7
+  25                             	.text
+  26                             	.Ltext0:
+  27                             		.global	_R_Systeminit
+  29                             	_R_Systeminit:
+  30                             	.LFB0:
+  31                             		.file 1 "../src/r_hardware_setup.c"
+   1:../src/r_hardware_setup.c **** /**************************************************************************************************
+   2:../src/r_hardware_setup.c **** * DISCLAIMER
+   3:../src/r_hardware_setup.c **** * This software is supplied by Renesas Electronics Corporation and is only intended for use with Re
+   4:../src/r_hardware_setup.c **** * No other uses are authorized. This software is owned by Renesas Electronics Corporation and is pr
+   5:../src/r_hardware_setup.c **** * applicable laws, including copyright laws. 
+   6:../src/r_hardware_setup.c **** * THIS SOFTWARE IS PROVIDED "AS IS" AND RENESAS MAKES NO WARRANTIESREGARDING THIS SOFTWARE, WHETHER
+   7:../src/r_hardware_setup.c **** * OR STATUTORY, INCLUDING BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULA
+   8:../src/r_hardware_setup.c **** * NON-INFRINGEMENT.  ALL SUCH WARRANTIES ARE EXPRESSLY DISCLAIMED.TO THE MAXIMUM EXTENT PERMITTED N
+   9:../src/r_hardware_setup.c **** * LAW, NEITHER RENESAS ELECTRONICS CORPORATION NOR ANY OF ITS AFFILIATED COMPANIES SHALL BE LIABLE 
+  10:../src/r_hardware_setup.c **** * INDIRECT, SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES FOR ANY REASON RELATED TO THIS SOFTWARE, E
+  11:../src/r_hardware_setup.c **** * ITS AFFILIATES HAVE BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+  12:../src/r_hardware_setup.c **** * Renesas reserves the right, without notice, to make changes to this software and to discontinue t
+  13:../src/r_hardware_setup.c **** * of this software. By using this software, you agree to the additional terms and conditions found 
+  14:../src/r_hardware_setup.c **** * following link:
+  15:../src/r_hardware_setup.c **** * http://www.renesas.com/disclaimer
+  16:../src/r_hardware_setup.c **** *
+  17:../src/r_hardware_setup.c **** * Copyright (C) 2011, 2015 Renesas Electronics Corporation. All rights reserved.
+  18:../src/r_hardware_setup.c **** ***************************************************************************************************
+  19:../src/r_hardware_setup.c **** 
+  20:../src/r_hardware_setup.c **** /**************************************************************************************************
+  21:../src/r_hardware_setup.c **** * File Name    : r_hardware_setup.c
+  22:../src/r_hardware_setup.c **** * Version      : CodeGenerator for RL78/G14 V2.04.02.01 [15 May 2015]
+  23:../src/r_hardware_setup.c **** * Device(s)    : R5F104LE
+  24:../src/r_hardware_setup.c **** * Tool-Chain   : GCCRL78
+  25:../src/r_hardware_setup.c **** * Description  : This file implements system initializing function.
+  26:../src/r_hardware_setup.c **** * Creation Date: 12/1/2017
+  27:../src/r_hardware_setup.c **** ***************************************************************************************************
+  28:../src/r_hardware_setup.c **** 
+  29:../src/r_hardware_setup.c **** /**************************************************************************************************
+  30:../src/r_hardware_setup.c **** Includes
+  31:../src/r_hardware_setup.c **** ***************************************************************************************************
+  32:../src/r_hardware_setup.c **** #include "r_cg_macrodriver.h"
+  33:../src/r_hardware_setup.c **** #include "r_cg_cgc.h"
+  34:../src/r_hardware_setup.c **** #include "r_cg_port.h"
+  35:../src/r_hardware_setup.c **** #include "r_cg_adc.h"
+  36:../src/r_hardware_setup.c **** #include "r_cg_timer.h"
+  37:../src/r_hardware_setup.c **** /* Start user code for include. Do not edit comment generated here */
+  38:../src/r_hardware_setup.c **** /* End user code. Do not edit comment generated here */
+  39:../src/r_hardware_setup.c **** #include "r_cg_userdefine.h"
+  40:../src/r_hardware_setup.c **** 
+  41:../src/r_hardware_setup.c **** /**************************************************************************************************
+  42:../src/r_hardware_setup.c **** Global variables and functions
+  43:../src/r_hardware_setup.c **** ***************************************************************************************************
+  44:../src/r_hardware_setup.c **** /* Start user code for global. Do not edit comment generated here */
+  45:../src/r_hardware_setup.c **** /* End user code. Do not edit comment generated here */
+  46:../src/r_hardware_setup.c **** int HardwareSetup(void);
+  47:../src/r_hardware_setup.c **** void R_Systeminit(void);
+  48:../src/r_hardware_setup.c **** 
+  49:../src/r_hardware_setup.c **** 
+  50:../src/r_hardware_setup.c **** /**************************************************************************************************
+  51:../src/r_hardware_setup.c **** * Function Name: R_Systeminit
+  52:../src/r_hardware_setup.c **** * Description  : This function initializes every macro.
+  53:../src/r_hardware_setup.c **** * Arguments    : None
+  54:../src/r_hardware_setup.c **** * Return Value : None
+  55:../src/r_hardware_setup.c **** ***************************************************************************************************
+  56:../src/r_hardware_setup.c **** void R_Systeminit(void)
+  57:../src/r_hardware_setup.c **** {
+  32                             		.loc 1 57 0
+  58:../src/r_hardware_setup.c ****     PIOR0 = 0x00U;
+  33                             		.loc 1 58 0
+  34 0000 C9 F0 77 00             		movw	r8, #119
+  35 0004 AD F0                   		movw	ax, r8
+  36 0006 BD F2                   		movw	r10, ax
+  37 0008 DA F2                   		movw	bc, r10
+  38 000a F1                      		clrb	a
+  39 000b 48 00 00                		mov	[bc], a
+  59:../src/r_hardware_setup.c ****     PIOR1 = 0x00U;
+  40                             		.loc 1 59 0
+  41 000e C9 F0 79 00             		movw	r8, #121
+  42 0012 AD F0                   		movw	ax, r8
+  43 0014 BD F2                   		movw	r10, ax
+  44 0016 DA F2                   		movw	bc, r10
+  45 0018 F1                      		clrb	a
+  46 0019 48 00 00                		mov	[bc], a
+  60:../src/r_hardware_setup.c ****     R_CGC_Create();
+  47                             		.loc 1 60 0
+  48 001c FC 00 00 00             		call	!!%code(_R_CGC_Create)
+  61:../src/r_hardware_setup.c ****     R_PORT_Create();
+  49                             		.loc 1 61 0
+  50 0020 FC 00 00 00             		call	!!%code(_R_PORT_Create)
+  62:../src/r_hardware_setup.c ****     R_ADC_Create();
+  51                             		.loc 1 62 0
+  52 0024 FC 00 00 00             		call	!!%code(_R_ADC_Create)
+  63:../src/r_hardware_setup.c ****     R_TAU0_Create();
+  53                             		.loc 1 63 0
+  54 0028 FC 00 00 00             		call	!!%code(_R_TAU0_Create)
+  64:../src/r_hardware_setup.c ****     R_TMR_RJ0_Create();
+  55                             		.loc 1 64 0
+  56 002c FC 00 00 00             		call	!!%code(_R_TMR_RJ0_Create)
+  65:../src/r_hardware_setup.c ****     R_TMR_RD0_Create();
+  57                             		.loc 1 65 0
+  58 0030 FC 00 00 00             		call	!!%code(_R_TMR_RD0_Create)
+  66:../src/r_hardware_setup.c ****     R_TMR_RD1_Create();
+  59                             		.loc 1 66 0
+  60 0034 FC 00 00 00             		call	!!%code(_R_TMR_RD1_Create)
+  67:../src/r_hardware_setup.c ****     R_TMR_RG0_Create();
+  61                             		.loc 1 67 0
+  62 0038 FC 00 00 00             		call	!!%code(_R_TMR_RG0_Create)
+  68:../src/r_hardware_setup.c ****     IAWCTL = 0x00U;
+  63                             		.loc 1 68 0
+  64 003c C9 F0 78 00             		movw	r8, #120
+  65 0040 AD F0                   		movw	ax, r8
+  66 0042 BD F2                   		movw	r10, ax
+  67 0044 DA F2                   		movw	bc, r10
+  68 0046 F1                      		clrb	a
+  69 0047 48 00 00                		mov	[bc], a
+  69:../src/r_hardware_setup.c **** }
+  70                             		.loc 1 69 0
+  71 004a D7                      		ret
+  72                             	.LFE0:
+  74                             		.global	_HardwareSetup
+  76                             	_HardwareSetup:
+  77                             	.LFB1:
+  70:../src/r_hardware_setup.c **** 
+  71:../src/r_hardware_setup.c **** /**************************************************************************************************
+  72:../src/r_hardware_setup.c **** * Function Name: HardwareSetup
+  73:../src/r_hardware_setup.c **** * Description  : This function initializes hardware setting.
+  74:../src/r_hardware_setup.c **** * Arguments    : None
+  75:../src/r_hardware_setup.c **** * Return Value : None
+  76:../src/r_hardware_setup.c **** ***************************************************************************************************
+  77:../src/r_hardware_setup.c **** int HardwareSetup(void)
+  78:../src/r_hardware_setup.c **** {
+  78                             		.loc 1 78 0
+  79                             		; start of function
+  80                             		; locals: 2 bytes
+  81 004b 20 02                   		subw	sp, #2
+  82                             	.LCFI0:
+  79:../src/r_hardware_setup.c ****     DI();
+  83                             		.loc 1 79 0
+  84                             	 ; 79 "../src/r_hardware_setup.c" 1
+  85 004d 71 7B FA                		di
+  86                             	 ; 0 "" 2
+  80:../src/r_hardware_setup.c ****     R_Systeminit();
+  87                             		.loc 1 80 0
+  88 0050 FC 00 00 00             		call	!!%code(_R_Systeminit)
+  81:../src/r_hardware_setup.c **** 
+  82:../src/r_hardware_setup.c ****     return (1U);
+  89                             		.loc 1 82 0
+  90 0054 E6                      		onew	ax
+  91 0055 B8 00                   		movw	[sp], ax
+  92 0057 BD F0                   		movw	r8, ax
+  83:../src/r_hardware_setup.c **** }
+  93                             		.loc 1 83 0
+  94 0059 10 02                   		addw	sp, #2
+  95 005b D7                      		ret
+  96                             	.LFE1:
+ 136                             	.Letext0:

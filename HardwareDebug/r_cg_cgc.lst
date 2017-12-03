@@ -1,0 +1,174 @@
+   1                             	r8	=	0xffef0
+   2                             	r16	=	0xffee8
+   3                             	r24	=	0xffee0
+   4                             	r9	=	0xffef1
+   5                             	r17	=	0xffee9
+   6                             	r25	=	0xffee1
+   7                             	r10	=	0xffef2
+   8                             	r18	=	0xffeea
+   9                             	r26	=	0xffee2
+  10                             	r11	=	0xffef3
+  11                             	r19	=	0xffeeb
+  12                             	r27	=	0xffee3
+  13                             	r12	=	0xffef4
+  14                             	r20	=	0xffeec
+  15                             	r28	=	0xffee4
+  16                             	r13	=	0xffef5
+  17                             	r21	=	0xffeed
+  18                             	r29	=	0xffee5
+  19                             	r14	=	0xffef6
+  20                             	r22	=	0xffeee
+  21                             	r30	=	0xffee6
+  22                             	r15	=	0xffef7
+  23                             	r23	=	0xffeef
+  24                             	r31	=	0xffee7
+  25                             	.text
+  26                             	.Ltext0:
+  27                             		.global	_R_CGC_Create
+  29                             	_R_CGC_Create:
+  30                             	.LFB0:
+  31                             		.file 1 "../src/r_cg_cgc.c"
+   1:../src/r_cg_cgc.c **** /**************************************************************************************************
+   2:../src/r_cg_cgc.c **** * DISCLAIMER
+   3:../src/r_cg_cgc.c **** * This software is supplied by Renesas Electronics Corporation and is only intended for use with Re
+   4:../src/r_cg_cgc.c **** * No other uses are authorized. This software is owned by Renesas Electronics Corporation and is pr
+   5:../src/r_cg_cgc.c **** * applicable laws, including copyright laws. 
+   6:../src/r_cg_cgc.c **** * THIS SOFTWARE IS PROVIDED "AS IS" AND RENESAS MAKES NO WARRANTIESREGARDING THIS SOFTWARE, WHETHER
+   7:../src/r_cg_cgc.c **** * OR STATUTORY, INCLUDING BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULA
+   8:../src/r_cg_cgc.c **** * NON-INFRINGEMENT.  ALL SUCH WARRANTIES ARE EXPRESSLY DISCLAIMED.TO THE MAXIMUM EXTENT PERMITTED N
+   9:../src/r_cg_cgc.c **** * LAW, NEITHER RENESAS ELECTRONICS CORPORATION NOR ANY OF ITS AFFILIATED COMPANIES SHALL BE LIABLE 
+  10:../src/r_cg_cgc.c **** * INDIRECT, SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES FOR ANY REASON RELATED TO THIS SOFTWARE, E
+  11:../src/r_cg_cgc.c **** * ITS AFFILIATES HAVE BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+  12:../src/r_cg_cgc.c **** * Renesas reserves the right, without notice, to make changes to this software and to discontinue t
+  13:../src/r_cg_cgc.c **** * of this software. By using this software, you agree to the additional terms and conditions found 
+  14:../src/r_cg_cgc.c **** * following link:
+  15:../src/r_cg_cgc.c **** * http://www.renesas.com/disclaimer
+  16:../src/r_cg_cgc.c **** *
+  17:../src/r_cg_cgc.c **** * Copyright (C) 2011, 2015 Renesas Electronics Corporation. All rights reserved.
+  18:../src/r_cg_cgc.c **** ***************************************************************************************************
+  19:../src/r_cg_cgc.c **** 
+  20:../src/r_cg_cgc.c **** /**************************************************************************************************
+  21:../src/r_cg_cgc.c **** * File Name    : r_cg_cgc.c
+  22:../src/r_cg_cgc.c **** * Version      : CodeGenerator for RL78/G14 V2.04.02.01 [15 May 2015]
+  23:../src/r_cg_cgc.c **** * Device(s)    : R5F104LE
+  24:../src/r_cg_cgc.c **** * Tool-Chain   : GCCRL78
+  25:../src/r_cg_cgc.c **** * Description  : This file implements device driver for CGC module.
+  26:../src/r_cg_cgc.c **** * Creation Date: 12/1/2017
+  27:../src/r_cg_cgc.c **** ***************************************************************************************************
+  28:../src/r_cg_cgc.c **** 
+  29:../src/r_cg_cgc.c **** /**************************************************************************************************
+  30:../src/r_cg_cgc.c **** Includes
+  31:../src/r_cg_cgc.c **** ***************************************************************************************************
+  32:../src/r_cg_cgc.c **** #include "r_cg_macrodriver.h"
+  33:../src/r_cg_cgc.c **** #include "r_cg_cgc.h"
+  34:../src/r_cg_cgc.c **** /* Start user code for include. Do not edit comment generated here */
+  35:../src/r_cg_cgc.c **** /* End user code. Do not edit comment generated here */
+  36:../src/r_cg_cgc.c **** #include "r_cg_userdefine.h"
+  37:../src/r_cg_cgc.c **** 
+  38:../src/r_cg_cgc.c **** /**************************************************************************************************
+  39:../src/r_cg_cgc.c **** Global variables and functions
+  40:../src/r_cg_cgc.c **** ***************************************************************************************************
+  41:../src/r_cg_cgc.c **** /* Start user code for global. Do not edit comment generated here */
+  42:../src/r_cg_cgc.c **** /* End user code. Do not edit comment generated here */
+  43:../src/r_cg_cgc.c **** 
+  44:../src/r_cg_cgc.c **** /**************************************************************************************************
+  45:../src/r_cg_cgc.c **** * Function Name: R_CGC_Create
+  46:../src/r_cg_cgc.c **** * Description  : This function initializes the clock generator.
+  47:../src/r_cg_cgc.c **** * Arguments    : None
+  48:../src/r_cg_cgc.c **** * Return Value : None
+  49:../src/r_cg_cgc.c **** ***************************************************************************************************
+  50:../src/r_cg_cgc.c **** void R_CGC_Create(void)
+  51:../src/r_cg_cgc.c **** {
+  32                             		.loc 1 51 0
+  52:../src/r_cg_cgc.c ****     /* Set fMX */
+  53:../src/r_cg_cgc.c ****     CMC = _00_CGC_HISYS_PORT | _00_CGC_SUB_PORT | _00_CGC_SYSOSC_DEFAULT | _00_CGC_SUBMODE_DEFAULT;
+  33                             		.loc 1 53 0
+  34 0000 C9 F0 A0 FF             		movw	r8, #-96
+  35 0004 AD F0                   		movw	ax, r8
+  36 0006 BD F2                   		movw	r10, ax
+  37 0008 DA F2                   		movw	bc, r10
+  38 000a F1                      		clrb	a
+  39 000b 48 00 00                		mov	[bc], a
+  54:../src/r_cg_cgc.c ****     MSTOP = 1U;
+  40                             		.loc 1 54 0
+  41 000e C9 F0 A1 FF             		movw	r8, #-95
+  42 0012 AD F0                   		movw	ax, r8
+  43 0014 BD F4                   		movw	r12, ax
+  44 0016 FA F4                   		movw	hl, r12
+  45 0018 8B                      		mov	a, [hl]
+  46 0019 9D F2                   		mov	r10, a
+  47 001b 6A F2 80                		or	r10, #-128
+  48 001e AD F0                   		movw	ax, r8
+  49 0020 DA F4                   		movw	bc, r12
+  50 0022 8D F2                   		mov	a, r10
+  51 0024 48 00 00                		mov	[bc], a
+  55:../src/r_cg_cgc.c ****     /* Set fMAIN */
+  56:../src/r_cg_cgc.c ****     MCM0 = 0U;
+  52                             		.loc 1 56 0
+  53 0027 C9 F0 A4 FF             		movw	r8, #-92
+  54 002b AD F0                   		movw	ax, r8
+  55 002d BD F4                   		movw	r12, ax
+  56 002f FA F4                   		movw	hl, r12
+  57 0031 8B                      		mov	a, [hl]
+  58 0032 9D F2                   		mov	r10, a
+  59 0034 5A F2 EF                		and	r10, #-17
+  60 0037 AD F0                   		movw	ax, r8
+  61 0039 DA F4                   		movw	bc, r12
+  62 003b 8D F2                   		mov	a, r10
+  63 003d 48 00 00                		mov	[bc], a
+  57:../src/r_cg_cgc.c ****     /* Set fSUB */
+  58:../src/r_cg_cgc.c ****     XTSTOP = 1U;
+  64                             		.loc 1 58 0
+  65 0040 C9 F0 A1 FF             		movw	r8, #-95
+  66 0044 AD F0                   		movw	ax, r8
+  67 0046 BD F4                   		movw	r12, ax
+  68 0048 FA F4                   		movw	hl, r12
+  69 004a 8B                      		mov	a, [hl]
+  70 004b 9D F2                   		mov	r10, a
+  71 004d 6A F2 40                		or	r10, #64
+  72 0050 AD F0                   		movw	ax, r8
+  73 0052 DA F4                   		movw	bc, r12
+  74 0054 8D F2                   		mov	a, r10
+  75 0056 48 00 00                		mov	[bc], a
+  59:../src/r_cg_cgc.c ****     OSMC = _10_CGC_RTC_CLK_FIL;
+  76                             		.loc 1 59 0
+  77 0059 C9 F0 F3 00             		movw	r8, #243
+  78 005d AD F0                   		movw	ax, r8
+  79 005f BD F2                   		movw	r10, ax
+  80 0061 DA F2                   		movw	bc, r10
+  81 0063 51 10                   		mov	a, #16
+  82 0065 48 00 00                		mov	[bc], a
+  60:../src/r_cg_cgc.c ****     /* Set fCLK */
+  61:../src/r_cg_cgc.c ****     CSS = 0U;
+  83                             		.loc 1 61 0
+  84 0068 C9 F0 A4 FF             		movw	r8, #-92
+  85 006c AD F0                   		movw	ax, r8
+  86 006e BD F4                   		movw	r12, ax
+  87 0070 FA F4                   		movw	hl, r12
+  88 0072 8B                      		mov	a, [hl]
+  89 0073 9D F2                   		mov	r10, a
+  90 0075 5A F2 BF                		and	r10, #-65
+  91 0078 AD F0                   		movw	ax, r8
+  92 007a DA F4                   		movw	bc, r12
+  93 007c 8D F2                   		mov	a, r10
+  94 007e 48 00 00                		mov	[bc], a
+  62:../src/r_cg_cgc.c ****     /* Set fIH */
+  63:../src/r_cg_cgc.c ****     HIOSTOP = 0U;
+  95                             		.loc 1 63 0
+  96 0081 C9 F0 A1 FF             		movw	r8, #-95
+  97 0085 AD F0                   		movw	ax, r8
+  98 0087 BD F4                   		movw	r12, ax
+  99 0089 FA F4                   		movw	hl, r12
+ 100 008b 8B                      		mov	a, [hl]
+ 101 008c 9D F2                   		mov	r10, a
+ 102 008e 5A F2 FE                		and	r10, #-2
+ 103 0091 AD F0                   		movw	ax, r8
+ 104 0093 DA F4                   		movw	bc, r12
+ 105 0095 8D F2                   		mov	a, r10
+ 106 0097 48 00 00                		mov	[bc], a
+  64:../src/r_cg_cgc.c **** }
+ 107                             		.loc 1 64 0
+ 108 009a D7                      		ret
+ 109                             	.LFE0:
+ 137                             	.Letext0:
+ 138                             		.file 2 "../src/iodefine.h"

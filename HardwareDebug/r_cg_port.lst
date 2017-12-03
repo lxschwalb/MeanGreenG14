@@ -1,0 +1,139 @@
+   1                             	r8	=	0xffef0
+   2                             	r16	=	0xffee8
+   3                             	r24	=	0xffee0
+   4                             	r9	=	0xffef1
+   5                             	r17	=	0xffee9
+   6                             	r25	=	0xffee1
+   7                             	r10	=	0xffef2
+   8                             	r18	=	0xffeea
+   9                             	r26	=	0xffee2
+  10                             	r11	=	0xffef3
+  11                             	r19	=	0xffeeb
+  12                             	r27	=	0xffee3
+  13                             	r12	=	0xffef4
+  14                             	r20	=	0xffeec
+  15                             	r28	=	0xffee4
+  16                             	r13	=	0xffef5
+  17                             	r21	=	0xffeed
+  18                             	r29	=	0xffee5
+  19                             	r14	=	0xffef6
+  20                             	r22	=	0xffeee
+  21                             	r30	=	0xffee6
+  22                             	r15	=	0xffef7
+  23                             	r23	=	0xffeef
+  24                             	r31	=	0xffee7
+  25                             	.text
+  26                             	.Ltext0:
+  27                             		.global	_R_PORT_Create
+  29                             	_R_PORT_Create:
+  30                             	.LFB0:
+  31                             		.file 1 "../src/r_cg_port.c"
+   1:../src/r_cg_port.c **** /**************************************************************************************************
+   2:../src/r_cg_port.c **** * DISCLAIMER
+   3:../src/r_cg_port.c **** * This software is supplied by Renesas Electronics Corporation and is only intended for use with Re
+   4:../src/r_cg_port.c **** * No other uses are authorized. This software is owned by Renesas Electronics Corporation and is pr
+   5:../src/r_cg_port.c **** * applicable laws, including copyright laws. 
+   6:../src/r_cg_port.c **** * THIS SOFTWARE IS PROVIDED "AS IS" AND RENESAS MAKES NO WARRANTIESREGARDING THIS SOFTWARE, WHETHER
+   7:../src/r_cg_port.c **** * OR STATUTORY, INCLUDING BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULA
+   8:../src/r_cg_port.c **** * NON-INFRINGEMENT.  ALL SUCH WARRANTIES ARE EXPRESSLY DISCLAIMED.TO THE MAXIMUM EXTENT PERMITTED N
+   9:../src/r_cg_port.c **** * LAW, NEITHER RENESAS ELECTRONICS CORPORATION NOR ANY OF ITS AFFILIATED COMPANIES SHALL BE LIABLE 
+  10:../src/r_cg_port.c **** * INDIRECT, SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES FOR ANY REASON RELATED TO THIS SOFTWARE, E
+  11:../src/r_cg_port.c **** * ITS AFFILIATES HAVE BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+  12:../src/r_cg_port.c **** * Renesas reserves the right, without notice, to make changes to this software and to discontinue t
+  13:../src/r_cg_port.c **** * of this software. By using this software, you agree to the additional terms and conditions found 
+  14:../src/r_cg_port.c **** * following link:
+  15:../src/r_cg_port.c **** * http://www.renesas.com/disclaimer
+  16:../src/r_cg_port.c **** *
+  17:../src/r_cg_port.c **** * Copyright (C) 2011, 2015 Renesas Electronics Corporation. All rights reserved.
+  18:../src/r_cg_port.c **** ***************************************************************************************************
+  19:../src/r_cg_port.c **** 
+  20:../src/r_cg_port.c **** /**************************************************************************************************
+  21:../src/r_cg_port.c **** * File Name    : r_cg_port.c
+  22:../src/r_cg_port.c **** * Version      : CodeGenerator for RL78/G14 V2.04.02.01 [15 May 2015]
+  23:../src/r_cg_port.c **** * Device(s)    : R5F104LE
+  24:../src/r_cg_port.c **** * Tool-Chain   : GCCRL78
+  25:../src/r_cg_port.c **** * Description  : This file implements device driver for PORT module.
+  26:../src/r_cg_port.c **** * Creation Date: 12/1/2017
+  27:../src/r_cg_port.c **** ***************************************************************************************************
+  28:../src/r_cg_port.c **** 
+  29:../src/r_cg_port.c **** /**************************************************************************************************
+  30:../src/r_cg_port.c **** Includes
+  31:../src/r_cg_port.c **** ***************************************************************************************************
+  32:../src/r_cg_port.c **** #include "r_cg_macrodriver.h"
+  33:../src/r_cg_port.c **** #include "r_cg_port.h"
+  34:../src/r_cg_port.c **** /* Start user code for include. Do not edit comment generated here */
+  35:../src/r_cg_port.c **** /* End user code. Do not edit comment generated here */
+  36:../src/r_cg_port.c **** #include "r_cg_userdefine.h"
+  37:../src/r_cg_port.c **** 
+  38:../src/r_cg_port.c **** /**************************************************************************************************
+  39:../src/r_cg_port.c **** Global variables and functions
+  40:../src/r_cg_port.c **** ***************************************************************************************************
+  41:../src/r_cg_port.c **** /* Start user code for global. Do not edit comment generated here */
+  42:../src/r_cg_port.c **** /* End user code. Do not edit comment generated here */
+  43:../src/r_cg_port.c **** 
+  44:../src/r_cg_port.c **** /**************************************************************************************************
+  45:../src/r_cg_port.c **** * Function Name: R_PORT_Create
+  46:../src/r_cg_port.c **** * Description  : This function initializes the Port I/O.
+  47:../src/r_cg_port.c **** * Arguments    : None
+  48:../src/r_cg_port.c **** * Return Value : None
+  49:../src/r_cg_port.c **** ***************************************************************************************************
+  50:../src/r_cg_port.c **** void R_PORT_Create(void)
+  51:../src/r_cg_port.c **** {
+  32                             		.loc 1 51 0
+  52:../src/r_cg_port.c ****     P7 = _00_Pn0_OUTPUT_0 | _00_Pn1_OUTPUT_0 | _00_Pn2_OUTPUT_0 | _00_Pn3_OUTPUT_0 | _00_Pn4_OUTPUT
+  33                             		.loc 1 52 0
+  34 0000 C9 F0 07 FF             		movw	r8, #-249
+  35 0004 AD F0                   		movw	ax, r8
+  36 0006 BD F2                   		movw	r10, ax
+  37 0008 DA F2                   		movw	bc, r10
+  38 000a F1                      		clrb	a
+  39 000b 48 00 00                		mov	[bc], a
+  53:../src/r_cg_port.c ****          _00_Pn5_OUTPUT_0 | _00_Pn6_OUTPUT_0 | _00_Pn7_OUTPUT_0;
+  54:../src/r_cg_port.c ****     PU4 = _01_PUn0_PULLUP_ON;
+  40                             		.loc 1 54 0
+  41 000e C9 F0 34 00             		movw	r8, #52
+  42 0012 AD F0                   		movw	ax, r8
+  43 0014 BD F2                   		movw	r10, ax
+  44 0016 DA F2                   		movw	bc, r10
+  45 0018 E1                      		oneb	a
+  46 0019 48 00 00                		mov	[bc], a
+  55:../src/r_cg_port.c ****     PMC14 = _00_PMCn7_DI_ON | _7F_PMC14_DEFAULT;
+  47                             		.loc 1 55 0
+  48 001c C9 F0 6E 00             		movw	r8, #110
+  49 0020 AD F0                   		movw	ax, r8
+  50 0022 BD F2                   		movw	r10, ax
+  51 0024 DA F2                   		movw	bc, r10
+  52 0026 51 7F                   		mov	a, #127
+  53 0028 48 00 00                		mov	[bc], a
+  56:../src/r_cg_port.c ****     PM4 = _01_PMn0_NOT_USE | _02_PMn1_MODE_INPUT | _04_PMn2_MODE_INPUT | _08_PMn3_MODE_INPUT | _F0_
+  54                             		.loc 1 56 0
+  55 002b C9 F0 24 FF             		movw	r8, #-220
+  56 002f AD F0                   		movw	ax, r8
+  57 0031 BD F2                   		movw	r10, ax
+  58 0033 DA F2                   		movw	bc, r10
+  59 0035 51 FF                   		mov	a, #-1
+  60 0037 48 00 00                		mov	[bc], a
+  57:../src/r_cg_port.c ****     PM7 = _00_PMn0_MODE_OUTPUT | _00_PMn1_MODE_OUTPUT | _00_PMn2_MODE_OUTPUT | _00_PMn3_MODE_OUTPUT
+  61                             		.loc 1 57 0
+  62 003a C9 F0 27 FF             		movw	r8, #-217
+  63 003e AD F0                   		movw	ax, r8
+  64 0040 BD F2                   		movw	r10, ax
+  65 0042 DA F2                   		movw	bc, r10
+  66 0044 F1                      		clrb	a
+  67 0045 48 00 00                		mov	[bc], a
+  58:../src/r_cg_port.c ****           _00_PMn4_MODE_OUTPUT | _00_PMn5_MODE_OUTPUT | _00_PMn6_MODE_OUTPUT | _00_PMn7_MODE_OUTPUT
+  59:../src/r_cg_port.c ****     PM14 = _01_PMn0_NOT_USE | _02_PMn1_NOT_USE | _40_PMn6_MODE_INPUT | _80_PMn7_MODE_INPUT | _3C_PM
+  68                             		.loc 1 59 0
+  69 0048 C9 F0 2E FF             		movw	r8, #-210
+  70 004c AD F0                   		movw	ax, r8
+  71 004e BD F2                   		movw	r10, ax
+  72 0050 DA F2                   		movw	bc, r10
+  73 0052 51 FF                   		mov	a, #-1
+  74 0054 48 00 00                		mov	[bc], a
+  60:../src/r_cg_port.c **** }
+  75                             		.loc 1 60 0
+  76 0057 D7                      		ret
+  77                             	.LFE0:
+ 105                             	.Letext0:
+ 106                             		.file 2 "../src/iodefine.h"
+ 107                             		.file 3 "../src/iodefine_ext.h"

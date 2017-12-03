@@ -1,0 +1,137 @@
+   1                             	# 1 "../src/r_reset_program.asm"
+   1                             	
+   0                             	
+   0                             	
+   0                             	
+   2                             	///************************************************************************************************
+   3                             	//* DISCLAIMER
+   4                             	//* This software is supplied by Renesas Electronics Corporation and is only intended for use with 
+   5                             	//* No other uses are authorized. This software is owned by Renesas Electronics Corporation and is 
+   6                             	//* applicable laws, including copyright laws. 
+   7                             	//* THIS SOFTWARE IS PROVIDED "AS IS" AND RENESAS MAKES NO WARRANTIESREGARDING THIS SOFTWARE, WHETH
+   8                             	//* OR STATUTORY, INCLUDING BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICU
+   9                             	//* NON-INFRINGEMENT.  ALL SUCH WARRANTIES ARE EXPRESSLY DISCLAIMED.TO THE MAXIMUM EXTENT PERMITTED
+  10                             	//* LAW, NEITHER RENESAS ELECTRONICS CORPORATION NOR ANY OF ITS AFFILIATED COMPANIES SHALL BE LIABL
+  11                             	//* INDIRECT, SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES FOR ANY REASON RELATED TO THIS SOFTWARE,
+  12                             	//* ITS AFFILIATES HAVE BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+  13                             	//* Renesas reserves the right, without notice, to make changes to this software and to discontinue
+  14                             	//* of this software. By using this software, you agree to the additional terms and conditions foun
+  15                             	//* following link:
+  16                             	//* http://www.renesas.com/disclaimer
+  17                             	//*
+  18                             	//* Copyright (C) 2011, 2015 Renesas Electronics Corporation. All rights reserved.
+  19                             	//*************************************************************************************************
+  20                             	
+  21                             	///*
+  22                             	//*************************************************************************************************
+  23                             	//* File Name    : r_reset_program.asm
+  24                             	//* Version      : CodeGenerator for RL78/G14 V2.04.02.01 [15 May 2015]
+  25                             	//* Device(s)    : R5F104LE
+  26                             	//* Tool-Chain   : gccrl78
+  27                             	//* Description  : This is start up file for RL78.
+  28                             	//* Creation Date: 12/1/2017
+  29                             	//*************************************************************************************************
+  30                             	//*/
+  31                             	
+  32                             		/*reset_program.asm*/
+  33                             	
+  34                             		.list
+  35                             	
+  36                             		.global _PowerON_Reset  /*! global Start routine */
+  37 0000 00 00                   		.short _PowerON_Reset
+  38                             	
+  39                             		.extern _HardwareSetup /*! external Sub-routine to initialise Hardware*/
+  40                             		.extern _data
+  41                             		.extern _mdata
+  42                             		.extern _ebss
+  43                             		.extern _bss
+  44                             		
+  45                             		.extern _edata
+  46                             		.extern _main 
+  47                             		.extern _stack
+  48                             		.extern _exit
+  49                             	
+  50                             		/*  ;; HL = start of list
+  51                             	        ;; DE = end of list
+  52                             	        ;; BC = step direction (+2 or -2)
+  53                             		*/
+  54                             		
+  55                             		.text
+  56                             	
+  57                             	/* call to _PowerON_Reset */
+  58                             	_PowerON_Reset:
+  59                             	/* initialise user stack pointer */
+  60 0002 CB F8 00 00             		movw sp,#_stack /* Set stack pointer */
+  61                             	
+  62                             	
+  63                             	/* load data section from ROM to RAM */	
+  64                             	;; block move to initialize .data
+  65                             	
+  66                             	        ;; we're copying from 00:[_romdatastart] to 0F:[_datastart]
+  67                             	        ;; and our data is not in the mirrored area.
+  68 0006 41 00                   	    mov     es, #0
+  69 0008 61 CF                   	    sel     rb0         /*  ;;bank 0 */
+  70 000a 34 00 00                	    movw    de, #_mdata	/* src ROM address of data section in de */
+  71 000d 36 00 00                	    movw    hl, #_data 	/* dest start RAM address of data section in hl */
+  72                             			
+  73 0010 61 DF                   	    sel     rb1              /* bank 1 */
+  74 0012 36 00 00                	    movw    hl, #_data 	/* dest start RAM address of data section in hl */
+  75 0015 30 00 00                	    movw    ax, #_edata   /*    ;; size of romdata section in ax */
+  76 0018 27                      	    subw    ax,hl  		/* store data size */
+  77 0019 31 1E                   	    shrw	ax,1
+  78                             	1:
+  79 001b 44 00 00                	    cmpw    ax, #0		   /* check if end of data */
+  80 001e DD 0E                   	    bz      $1f
+  81 0020 B1                      	    decw    ax
+  82 0021 61 CF                   	    sel     rb0             /* bank 0 */
+  83 0023 11 A9                   	    movw    ax, es:[de]
+  84 0025 BB                      	    movw    [hl], ax
+  85 0026 A5                      	    incw    de
+  86 0027 A5                      	    incw	de
+  87 0028 A7                      	    incw    hl
+  88 0029 A7                      		incw	hl
+  89 002a 61 DF                   	    sel     rb1         /* bank 1  -  compare and decrement*/
+  90 002c EF ED                   	    br      $1b
+  91                             	1:
+  92                             	
+  93                             		
+  94                             	/* bss initialisation : zero out bss */
+  95 002e 61 CF                   	    sel     rb0         /* bank 0 */
+  96 0030 36 00 00                	    movw    hl, #_bss  	/* store the start address of bss in hl */
+  97 0033 30 00 00                	    movw    ax, #0		/* load AX reg with zero */
+  98 0036 61 DF                   	    sel     rb1         /* bank 1 */
+  99 0038 30 00 00                	    movw    ax, #_ebss  /* store the end address (size of) bss section in ax */
+ 100 003b 27                      	    subw    ax,hl ;; store data size
+ 101 003c 31 1E                   	    shrw    ax,1
+ 102                             	1:
+ 103 003e 44 00 00                	    cmpw    ax, #0
+ 104 0041 DD 0A                   	    bz      $1f
+ 105 0043 B1                      	    decw    ax
+ 106 0044 61 CF                   	    sel     rb0         /* bank 0 */
+ 107 0046 BB                      	    movw    [hl], ax
+ 108 0047 A7                      	    incw    hl
+ 109 0048 A7                      	    incw	hl
+ 110 0049 61 DF                   	    sel     rb1
+ 111 004b EF F1                   	    br      $1b
+ 112                             	1:
+ 113 004d 61 CF                   	    sel     rb0             /* bank 0 */
+ 114                             	
+ 115                             	/* call the hardware initialiser */
+ 116 004f FC 00 00 00             		call	!!_HardwareSetup
+ 117 0053 00                      		nop
+ 118                             	
+ 119                             	
+ 120                             	/* start user program */
+ 121                             	
+ 122 0054 30 00 00                	    movw    ax, #0
+ 123 0057 C1                      	    push    ax      /* envp */
+ 124 0058 C1                      	    push    ax      /* argv */
+ 125 0059 C1                      	    push    ax      /* argc */
+ 126 005a FC 00 00 00             	    call	!!_main
+ 127                             	
+ 128                             	
+ 129                             	/* call to exit*/
+ 130                             	_exit:
+ 131 005e EF FE                   	     br	$_exit
+ 132                             	
+ 133                             		.end
