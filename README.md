@@ -4,9 +4,13 @@ Signal generator using renesas rl78 g14
 The control buttons are simple active-low input pins. I will still add the circuit diagram of how I implemented it, but there are many ways to do it. The connections are as follow:
 
 Right:  P41
+
 Down:   P42
+
 Middle: P43
+
 Up:     P137
+
 Left:   P146
 
 The signal generator output is just a PWM output with a passive low pass filter. I chose a cuttoff of 100kHz, but it could be made more or less. Making it less decreases noise, but limmits the frequency the signal generator can output.
