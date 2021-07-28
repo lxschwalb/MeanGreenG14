@@ -1,3 +1,5 @@
+### NOTE: This project has been abandoned before it was finished. Feel free to continue with it, or use the code for whatever purpose you want though
+
 # MeanGreenG14
 Signal generator using renesas rl78 g14
 
